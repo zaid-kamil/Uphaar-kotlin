@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/Home">
+
+    <fragment
+        android:id="@+id/Home"
+        android:name="com.digipod.uphaar.fragments.HomeFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/Donate" />
+        <action
+            android:id="@+id/action_Home_to_myDonationsFragment"
+            app:destination="@id/myDonationsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/Donate"
+        android:name="com.digipod.uphaar.fragments.DonationFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_donation"/>
+    <fragment
+        android:id="@+id/myDonationsFragment"
+        android:name="com.digipod.uphaar.fragments.MyDonationsFragment"
+        android:label="fragment_my_donations"
+        tools:layout="@layout/fragment_my_donations" />
+</navigation>

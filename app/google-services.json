@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "852918205439",
+    "firebase_url": "https://companera-b01a4.firebaseio.com",
+    "project_id": "companera-b01a4",
+    "storage_bucket": "companera-b01a4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852918205439:android:eb7a5a9a951373ff1b45ca",
+        "android_client_info": {
+          "package_name": "com.digipod.uphaar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852918205439-a0nah8lhondacje58pubnfu0v41leqg6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaSFPRXIeLfHY2hJsE0ZWG7XVIHhfXb1I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852918205439-a0nah8lhondacje58pubnfu0v41leqg6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
