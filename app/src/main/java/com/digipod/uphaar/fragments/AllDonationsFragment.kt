@@ -9,23 +9,22 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.digipod.uphaar.R
-import com.digipod.uphaar.adapters.MyDonateAdapter
-import com.digipod.uphaar.databinding.FragmentMyDonationsBinding
+import com.digipod.uphaar.adapters.DonateAdapter
+import com.digipod.uphaar.databinding.FragmentAllDonationsBinding
+import com.digipod.uphaar.listeners.OnDonateItemClickListener
 import com.digipod.uphaar.models.DonateModel
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.ktx.storage
 
 
-class MyDonationsFragment : Fragment() {
-    private var _binding: FragmentMyDonationsBinding? = null
+class AllDonationsFragment : Fragment(), OnDonateItemClickListener {
+    private var _binding: FragmentAllDonationsBinding? = null
     private val binding get() = _binding!!
 
     private val auth = Firebase.auth
     private val db = Firebase.firestore
-    private val storage = Firebase.storage
     private lateinit var donationList: ArrayList<DonateModel>
 
     override fun onCreateView(
@@ -33,7 +32,7 @@ class MyDonationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentMyDonationsBinding.inflate(inflater, container, false)
+        _binding = FragmentAllDonationsBinding.inflate(inflater, container, false)
         return binding.root
 
     }
@@ -43,7 +42,8 @@ class MyDonationsFragment : Fragment() {
         donationList = arrayListOf()
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = MyDonateAdapter(donationList, R.layout.card_donation)
+            adapter =
+                DonateAdapter(donationList, this@AllDonationsFragment, R.layout.card_all_donation)
         }
         loadMyDonations()
 
@@ -62,6 +62,7 @@ class MyDonationsFragment : Fragment() {
                     }
                     try {
                         binding.recyclerView.adapter?.notifyDataSetChanged()
+                        binding.textHeader.text = "All Uphaars (${it.size()})"
                     } catch (e: Exception) {
 
                     }
@@ -91,5 +92,17 @@ class MyDonationsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onItemClick(v: View, d: DonateModel, pos: Int) {
+        AlertDialog.Builder(requireContext()).apply {
+            setTitle("Donation Details")
+            setMessage("${d.donationPlace} received ${d.qty} ${d.item} from ${d.pickupPlace}")
+            setPositiveButton("Make your own Donation") { _, _ ->
+                findNavController().navigate(R.id.action_allDonationsFragment_to_donate)
+            }
+            create()
+            show()
+        }
     }
 }

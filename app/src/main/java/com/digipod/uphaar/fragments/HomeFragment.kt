@@ -1,5 +1,6 @@
 package com.digipod.uphaar.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.digipod.uphaar.AuthActivity
 import com.digipod.uphaar.R
 import com.digipod.uphaar.adapters.PlaceAdapter
 import com.digipod.uphaar.databinding.FragmentHomeBinding
@@ -19,11 +21,11 @@ import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 
-class HomeFragment : Fragment(),OnDonationPlaceSelectionListener {
+class HomeFragment : Fragment(), OnDonationPlaceSelectionListener {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private lateinit var placeList:ArrayList<DonationPlace>
+    private lateinit var placeList: ArrayList<DonationPlace>
     private val auth = Firebase.auth
     private val db = Firebase.firestore
     private val storage = Firebase.storage
@@ -43,10 +45,21 @@ class HomeFragment : Fragment(),OnDonationPlaceSelectionListener {
         placeList = arrayListOf()
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = PlaceAdapter(placeList,this@HomeFragment,R.layout.card_place)
+            adapter = PlaceAdapter(placeList, this@HomeFragment, R.layout.card_place)
         }
         loadData()
-
+        binding.fabMyDonation.setOnClickListener {
+            findNavController().navigate(R.id.action_Home_to_myDonationsFragment)
+        }
+        binding.chipSignout.setOnClickListener {
+            requireActivity().apply {
+                auth.signOut()
+                startActivity(Intent(this, AuthActivity::class.java))
+            }
+        }
+        binding.chipAllDonation.setOnClickListener {
+            findNavController().navigate(R.id.action_Home_to_allDonationsFragment)
+        }
     }
 
     private fun loadData() {
@@ -54,7 +67,7 @@ class HomeFragment : Fragment(),OnDonationPlaceSelectionListener {
             .addOnFailureListener {
                 showSnack(it.message.toString())
             }.addOnSuccessListener {
-                if(it.size()>0){
+                if (it.size() > 0) {
                     for (document in it.documents) {
                         val item = document.toObject<DonationPlace>()
                         if (item != null) {
@@ -63,7 +76,7 @@ class HomeFragment : Fragment(),OnDonationPlaceSelectionListener {
                     }
                     try {
                         binding.recyclerView.adapter?.notifyDataSetChanged()
-                    }catch (e:Exception){
+                    } catch (e: Exception) {
 
                     }
                 }
@@ -76,8 +89,13 @@ class HomeFragment : Fragment(),OnDonationPlaceSelectionListener {
     }
 
     override fun onDonationPlaceSelected(v: View, place: DonationPlace, pos: Int) {
-      findNavController().navigate(HomeFragmentDirections.actionFirstFragmentToSecondFragment(place.name))
+        findNavController().navigate(
+            HomeFragmentDirections.actionFirstFragmentToSecondFragment(
+                place.name
+            )
+        )
     }
+
     private fun showSnack(msg: String) {
         Snackbar.make(binding.root, msg, Snackbar.LENGTH_LONG).show()
     }

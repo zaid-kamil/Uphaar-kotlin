@@ -5,7 +5,7 @@
     android:id="@+id/nestedScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MyDonationsFragment">
+    tools:context=".fragments.AllDonationsFragment">
 
     <TextView
         android:id="@+id/textHeader"
@@ -15,7 +15,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="1dp"
         android:fontFamily="sans-serif-light"
-        android:text="My Uphaars"
+        android:text="All Uphaars (12)"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,5 +43,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textHeader"
-        tools:listitem="@layout/card_donation" />
+        tools:listitem="@layout/card_all_donation" />
 </androidx.constraintlayout.widget.ConstraintLayout>

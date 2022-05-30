@@ -1,5 +1,6 @@
 package com.digipod.uphaar.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.digipod.uphaar.R
 import com.digipod.uphaar.models.DonateModel
+import com.google.android.material.card.MaterialCardView
 
 class MyDonateAdapter(
     private val donatedItemList: ArrayList<DonateModel>,
@@ -18,11 +20,16 @@ class MyDonateAdapter(
         private val textItem: TextView = iv.findViewById(R.id.textItem)
         private val textPlace: TextView = iv.findViewById(R.id.textPlace)
         private val img: ImageView = iv.findViewById(R.id.img)
+        private val card: MaterialCardView = iv.findViewById(R.id.card)
         fun bind(item: DonateModel) {
             textPlace.text = item.donationPlace
             textItem.text = item.item
-            Glide.with(img).load(item.imgUrl).into(img)
-         }
+            Glide.with(img).load(item.imgUrl).placeholder(R.drawable.ic_baseline_image_24).into(img)
+            when (item.deliveryStatus) {
+                "pending" -> card.setCardBackgroundColor(Color.YELLOW)
+                "complete" -> card.setCardBackgroundColor(Color.GREEN)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {

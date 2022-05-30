@@ -17,19 +17,34 @@
         <action
             android:id="@+id/action_Home_to_myDonationsFragment"
             app:destination="@id/mydonations" />
+        <action
+            android:id="@+id/action_Home_to_allDonationsFragment"
+            app:destination="@id/allDonationsFragment" />
     </fragment>
     <fragment
         android:id="@+id/donate"
         android:name="com.digipod.uphaar.fragments.DonationFragment"
         android:label="Donate New"
-        tools:layout="@layout/fragment_donation" >
+        tools:layout="@layout/fragment_donation">
         <argument
             android:name="selectedLocation"
             app:argType="string" />
+        <action
+            android:id="@+id/action_donate_to_mydonations"
+            app:destination="@id/mydonations" />
     </fragment>
     <fragment
         android:id="@+id/mydonations"
         android:name="com.digipod.uphaar.fragments.MyDonationsFragment"
         android:label="My Donations"
         tools:layout="@layout/fragment_my_donations" />
+    <fragment
+        android:id="@+id/allDonationsFragment"
+        android:name="com.digipod.uphaar.fragments.AllDonationsFragment"
+        android:label="fragment_all_donations"
+        tools:layout="@layout/fragment_all_donations">
+        <action
+            android:id="@+id/action_allDonationsFragment_to_donate"
+            app:destination="@id/donate" />
+    </fragment>
 </navigation>
