@@ -14,8 +14,8 @@ class DonateAdapter(
 ) : RecyclerView.Adapter<DonateAdapter.Holder>() {
     class Holder(iv: View) : RecyclerView.ViewHolder(iv) {
 
-        fun bind(item: DonateModel, listener: OnDonateItemClickListener) {
-            TODO("Not yet implemented")
+        fun bind(item: DonateModel) {
+
         }
 
     }
@@ -27,7 +27,7 @@ class DonateAdapter(
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val item = donatedItemList[position]
-        holder.bind(item, listener)
+        holder.bind(item)
     }
 
     override fun getItemCount() = donatedItemList.size

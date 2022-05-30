@@ -6,6 +6,7 @@ data class DonateModel(
     val item: String = "",
     val imgUrl: String = "",
     val qty: Int = 0,
-    val donationPlaceId:String = "",
-    val deliveryStatus:String="pending"
+    val donationPlaceId: String = "",
+    val deliveryStatus: String = "pending",
+    val pickupPlace: String = ""
 )

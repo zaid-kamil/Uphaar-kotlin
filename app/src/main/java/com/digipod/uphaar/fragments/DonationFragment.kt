@@ -1,5 +1,6 @@
 package com.digipod.uphaar.fragments
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +25,7 @@ class DonationFragment : Fragment() {
     private val auth = Firebase.auth
     private val db = Firebase.firestore
     private val storage = Firebase.storage
+    private  lateinit var location:String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +39,26 @@ class DonationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.imgSelect.setOnClickListener {
+            selectImage()
+        }
+        binding.btnDonateConfirm.setOnClickListener {
+            sendToCloud()
+        }
+        location = DonationFragmentArgs.fromBundle(requireArguments()).selectedLocation
+    }
+
+    private fun sendToCloud() {
+        val imgUri = binding.imgSelect.tag as Uri
+        val place = location
+        val title = binding.editItemTitle.text.toString().trim()
+        val qty = binding.editQty.text.toString().trim()
+        val pickup = binding.editPickupLocation.text.toString().trim()
+        
+
+    }
+
+    private fun selectImage() {
 
     }
 

@@ -8,24 +8,28 @@
     <fragment
         android:id="@+id/Home"
         android:name="com.digipod.uphaar.fragments.HomeFragment"
-        android:label="@string/first_fragment_label"
+        android:label="Home"
         tools:layout="@layout/fragment_home">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/Donate" />
+            app:destination="@id/donate" />
         <action
             android:id="@+id/action_Home_to_myDonationsFragment"
-            app:destination="@id/myDonationsFragment" />
+            app:destination="@id/mydonations" />
     </fragment>
     <fragment
-        android:id="@+id/Donate"
+        android:id="@+id/donate"
         android:name="com.digipod.uphaar.fragments.DonationFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_donation"/>
+        android:label="Donate New"
+        tools:layout="@layout/fragment_donation" >
+        <argument
+            android:name="selectedLocation"
+            app:argType="string" />
+    </fragment>
     <fragment
-        android:id="@+id/myDonationsFragment"
+        android:id="@+id/mydonations"
         android:name="com.digipod.uphaar.fragments.MyDonationsFragment"
-        android:label="fragment_my_donations"
+        android:label="My Donations"
         tools:layout="@layout/fragment_my_donations" />
 </navigation>

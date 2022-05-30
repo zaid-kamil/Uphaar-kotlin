@@ -3,10 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ZAID/AndroidStudioProjects/Uphaar/app/src/main/res/layout/activity_auth.xml" value="0.32563405797101447" />
         <entry key="..\:/Users/ZAID/AndroidStudioProjects/Uphaar/app/src/main/res/layout/activity_main.xml" value="0.32563405797101447" />
+        <entry key="..\:/Users/ZAID/AndroidStudioProjects/Uphaar/app/src/main/res/layout/card_donation.xml" value="0.32563405797101447" />
+        <entry key="..\:/Users/ZAID/AndroidStudioProjects/Uphaar/app/src/main/res/layout/card_place.xml" value="0.4" />
         <entry key="..\:/Users/ZAID/AndroidStudioProjects/Uphaar/app/src/main/res/layout/fragment_add_location_request.xml" value="0.32563405797101447" />
+        <entry key="..\:/Users/ZAID/AndroidStudioProjects/Uphaar/app/src/main/res/layout/fragment_donation.xml" value="0.32563405797101447" />
         <entry key="..\:/Users/ZAID/AndroidStudioProjects/Uphaar/app/src/main/res/layout/fragment_home.xml" value="0.32563405797101447" />
         <entry key="..\:/Users/ZAID/AndroidStudioProjects/Uphaar/app/src/main/res/layout/fragment_login.xml" value="0.32563405797101447" />
+        <entry key="..\:/Users/ZAID/AndroidStudioProjects/Uphaar/app/src/main/res/layout/fragment_my_donations.xml" value="0.32563405797101447" />
+        <entry key="..\:/Users/ZAID/AndroidStudioProjects/Uphaar/app/src/main/res/layout/fragment_register.xml" value="0.32563405797101447" />
         <entry key="..\:/Users/ZAID/AndroidStudioProjects/Uphaar/app/src/main/res/menu/menu_main.xml" value="0.4666666666666667" />
       </map>
     </option>
