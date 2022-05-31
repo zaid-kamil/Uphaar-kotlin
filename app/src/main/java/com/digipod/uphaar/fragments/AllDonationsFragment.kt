@@ -51,7 +51,7 @@ class AllDonationsFragment : Fragment(), OnDonateItemClickListener {
 
     private fun loadMyDonations() {
         donationList.clear()
-        db.collection("donations").whereEqualTo("uid", auth.currentUser?.uid)
+        db.collection("donations")
             .orderBy("donationPlace")
             .get()
             .addOnSuccessListener {
